@@ -17,7 +17,7 @@ struct Atom {
     var z : Float?
     
     init(tab: [String]) {
-        if tab.count == 12 {
+        if tab.count >= 12 {
             self.nb = Int(tab[1])
             self.name = tab[11]
             self.subname = tab[2]
@@ -43,8 +43,8 @@ struct Connect {
 class Ligand {
     
     var name : String?
-    var atoms : [Atom]?
-    var connects : [Connect]?
+    var atoms : [Atom] = []
+    var connects : [Connect] = []
     
     func loadFile(handler : (Bool) -> Void) {
         print("loadfile :", self.name)
@@ -53,13 +53,12 @@ class Ligand {
                 let fullText = try String(contentsOfURL: urlpath)
                 let reading = fullText.componentsSeparatedByString("\n") as [String]
                 for line in reading {
-                    //print("line :", line)
                     var tab = line.componentsSeparatedByString(" ") as [String]
                     tab = tab.filter{$0 != ""}
-                    if tab.count > 1 && tab[0] == "ATOM" {
-                        self.atoms?.append(Atom(tab: tab))
+                    if tab.count >= 12 && tab[0] == "ATOM" {
+                        self.atoms.append(Atom(tab: tab))
                     } else if tab.count > 1 && tab[0] == "CONECT" {
-                        self.connects?.append(Connect(tab: tab))
+                        self.connects.append(Connect(tab: tab))
                     }
                 }
                 return handler(true)
@@ -109,8 +108,10 @@ class ListViewController: UIViewController, NSXMLParserDelegate, UITableViewDele
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.ligandSearch[indexPath.row].loadFile {
             (success : Bool) -> Void in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             if success {
                 self.performSegueWithIdentifier("LigandSegue", sender: indexPath.row)
             } else {
