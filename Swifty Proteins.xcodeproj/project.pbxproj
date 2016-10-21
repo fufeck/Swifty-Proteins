@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		CD27A95E1DB8F67B0058AB8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27A95D1DB8F67B0058AB8E /* AppDelegate.swift */; };
-		CD27A9601DB8F67B0058AB8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27A95F1DB8F67B0058AB8E /* ViewController.swift */; };
 		CD27A9631DB8F67B0058AB8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD27A9611DB8F67B0058AB8E /* Main.storyboard */; };
 		CD27A9661DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD27A9641DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodeld */; };
 		CD27A9681DB8F67B0058AB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD27A9671DB8F67B0058AB8E /* Assets.xcassets */; };
 		CD27A96B1DB8F67B0058AB8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD27A9691DB8F67B0058AB8E /* LaunchScreen.storyboard */; };
+		CD27A9731DB8F6C00058AB8E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27A9721DB8F6C00058AB8E /* LoginViewController.swift */; };
+		CD27A9751DB8F8800058AB8E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27A9741DB8F8800058AB8E /* ListViewController.swift */; };
+		CD9DECF81DBA3A29004A5B03 /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD9DECF71DBA3A29004A5B03 /* ligands.txt */; };
+		CD9DECFA1DBA63B0004A5B03 /* ProteinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CD27A95A1DB8F67B0058AB8E /* Swifty Proteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifty Proteins.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD27A95D1DB8F67B0058AB8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD27A95F1DB8F67B0058AB8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD27A9621DB8F67B0058AB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD27A9651DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Swifty_Proteins.xcdatamodel; sourceTree = "<group>"; };
 		CD27A9671DB8F67B0058AB8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD27A96A1DB8F67B0058AB8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD27A96C1DB8F67B0058AB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD27A9721DB8F6C00058AB8E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CD27A9741DB8F8800058AB8E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		CD9DECF71DBA3A29004A5B03 /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
+		CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				CD27A95D1DB8F67B0058AB8E /* AppDelegate.swift */,
-				CD27A95F1DB8F67B0058AB8E /* ViewController.swift */,
+				CD27A9721DB8F6C00058AB8E /* LoginViewController.swift */,
+				CD27A9741DB8F8800058AB8E /* ListViewController.swift */,
+				CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */,
 				CD27A9611DB8F67B0058AB8E /* Main.storyboard */,
 				CD27A9671DB8F67B0058AB8E /* Assets.xcassets */,
+				CD9DECF71DBA3A29004A5B03 /* ligands.txt */,
 				CD27A9691DB8F67B0058AB8E /* LaunchScreen.storyboard */,
 				CD27A96C1DB8F67B0058AB8E /* Info.plist */,
 				CD27A9641DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodeld */,
@@ -128,6 +137,7 @@
 				CD27A96B1DB8F67B0058AB8E /* LaunchScreen.storyboard in Resources */,
 				CD27A9681DB8F67B0058AB8E /* Assets.xcassets in Resources */,
 				CD27A9631DB8F67B0058AB8E /* Main.storyboard in Resources */,
+				CD9DECF81DBA3A29004A5B03 /* ligands.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD27A9601DB8F67B0058AB8E /* ViewController.swift in Sources */,
+				CD27A9731DB8F6C00058AB8E /* LoginViewController.swift in Sources */,
 				CD27A9661DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodeld in Sources */,
+				CD9DECFA1DBA63B0004A5B03 /* ProteinViewController.swift in Sources */,
+				CD27A9751DB8F8800058AB8E /* ListViewController.swift in Sources */,
 				CD27A95E1DB8F67B0058AB8E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +304,7 @@
 				CD27A9711DB8F67B0058AB8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
