@@ -10,20 +10,18 @@ import UIKit
 
 struct Atom {
     var nb : Int?
-    var name : String?
-    var subname : String?
     var x : Float?
     var y : Float?
     var z : Float?
+    var info : Molecule?
     
     init(tab: [String]) {
         if tab.count >= 12 {
             self.nb = Int(tab[1])
-            self.name = tab[11]
-            self.subname = tab[2]
             self.x = Float(tab[6])
             self.y = Float(tab[7])
             self.z = Float(tab[8])
+            self.info = ProteinInfo.info.find(tab[11])
         }
     }
 }
