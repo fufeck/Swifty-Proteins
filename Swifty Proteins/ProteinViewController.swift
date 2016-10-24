@@ -9,6 +9,47 @@
 import UIKit
 import SceneKit
 
+class   CylinderLine: SCNNode
+{
+    init( parent: SCNNode, v1: SCNVector3, v2: SCNVector3) {
+        super.init()
+        let  height = v1.distance(v2)
+        position = v1
+        let nodeV2 = SCNNode()
+        nodeV2.position = v2
+        parent.addChildNode(nodeV2)
+        let zAlign = SCNNode()
+        zAlign.eulerAngles.x = Float(M_PI_2)
+        let cyl = SCNCylinder(radius: 0.1, height: CGFloat(height))
+        cyl.firstMaterial?.diffuse.contents = UIColor.grayColor()
+        let nodeCyl = SCNNode(geometry: cyl)
+        nodeCyl.position.y = Float(-height/2)
+        zAlign.addChildNode(nodeCyl)
+        addChildNode(zAlign)
+        constraints = [SCNLookAtConstraint(target: nodeV2)]
+    }
+    
+    override init() {
+        super.init()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+private extension SCNVector3{
+    func distance(receiver:SCNVector3) -> Double {
+        let xd = receiver.x - self.x
+        let yd = receiver.y - self.y
+        let zd = receiver.z - self.z
+        let distance = Double(sqrt(xd * xd + yd * yd + zd * zd))
+        
+        if (distance < 0) {
+            return (distance * -1)
+        }
+        return (distance)
+    }
+}
 
 
 class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
@@ -16,9 +57,7 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
     var ligand : Ligand?
     // Geometry
     var geometryNode: SCNNode = SCNNode()
-    
-    // Gestures
-    var currentAngle: Float = 0.0
+
     
     @IBOutlet weak var ligandScene: SCNView! {
         didSet {
@@ -26,47 +65,45 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
     
-    func createAtom() -> SCNGeometry {
-        let carbonAtom : SCNGeometry = SCNSphere(radius: 1.70)
-        carbonAtom.firstMaterial!.diffuse.contents = UIColor.darkGrayColor()
-        carbonAtom.firstMaterial!.specular.contents = UIColor.whiteColor()
-        return carbonAtom
+    func createShere() -> SCNGeometry {
+        let sphere : SCNGeometry = SCNSphere(radius: 0.5)
+        sphere.firstMaterial!.diffuse.contents = UIColor.redColor()
+        sphere.firstMaterial!.specular.contents = UIColor.whiteColor()
+        return sphere
     }
     
-    func allAtoms() -> SCNNode {
-        let atomsNode = SCNNode()
-        
-        for atom in ligand!.atoms {
-            print(atom.x!, atom.y!, atom.z!)
-            let atomNode = SCNNode(geometry: createAtom())
-//            atomNode.position = SCNVector3Make(+2, 0, 0)
+    func createScene() -> SCNNode {
+        let sceneNode = SCNNode()
+
+        //            CREATE ATOMS
+        for atom in self.ligand!.atoms {
+            let atomNode = SCNNode(geometry: self.createShere())
             atomNode.position = SCNVector3Make(atom.x!, atom.y!, atom.z!)
-            atomsNode.addChildNode(atomNode)
+            sceneNode.addChildNode(atomNode)
         }
-        
-        return atomsNode
+        //            CREATE CONNECTS
+        for connect in self.ligand!.connects {
+            if let first = self.ligand?.findAtom(connect.0),
+                let second = self.ligand?.findAtom(connect.1) {
+                let v1 = SCNVector3Make(first.x!, first.y!, first.z!)
+                let v2 = SCNVector3Make(second.x!, second.y!, second.z!)
+                let connectNode = CylinderLine(parent: sceneNode, v1: v1, v2: v2)
+                sceneNode.addChildNode(connectNode)
+            }
+        }
+        return sceneNode
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        sceneSetup()
-        geometryNode = self.allAtoms()
+        //        SETUP SCENE
+        self.sceneSetup()
+        //        CREATE MOLECULE
+        self.geometryNode = self.createScene()
+        //        DISPLAY MOLECULE
         ligandScene.scene!.rootNode.addChildNode(geometryNode)
     }
     
-    func panGesture(sender: UIPanGestureRecognizer) {
-        let translation = sender.translationInView(sender.view!)
-        var newAngle = (Float)(translation.x)*(Float)(M_PI) / 180.0
-        newAngle += currentAngle
-        
-        geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
-        
-        if(sender.state == UIGestureRecognizerState.Ended) {
-            currentAngle = newAngle
-        }
-    }
-    
-    // MARK: Scene
     func sceneSetup() {
         let scene = SCNScene()
         
@@ -85,13 +122,12 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(-3, 44, 100)
-//        cameraNode.position = SCNVector3Make(0, 0, 25)
+        cameraNode.position = SCNVector3Make(0, 0, 100)
         scene.rootNode.addChildNode(cameraNode)
-        
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ProteinViewController.panGesture(_:)))
-        ligandScene.addGestureRecognizer(panRecognizer)
-        ligandScene.scene = scene
+
+        self.ligandScene.allowsCameraControl = true
+        self.ligandScene.autoenablesDefaultLighting = true
+        self.ligandScene.scene = scene
     }
     
     override func viewDidLoad() {

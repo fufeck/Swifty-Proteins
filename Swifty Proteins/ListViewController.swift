@@ -28,23 +28,33 @@ struct Atom {
     }
 }
 
-struct Connect {
-    var nbs : [Int]?
-    
-    init(tab: [String]) {
-        var i = 1
-        while i <= tab.count {
-            nbs?.append(Int(tab[i])!)
-            i = i + 1
-        }
-    }
-}
-
 class Ligand {
     
     var name : String?
     var atoms : [Atom] = []
-    var connects : [Connect] = []
+    var connects : [(Int, Int)] = []
+
+    func findAtom(nb : Int) -> Atom? {
+        for atom in self.atoms { if atom.nb == nb { return atom } }
+        return nil
+    }
+
+    
+    func connectExist(a:[(Int, Int)], v:(Int,Int)) -> Bool {
+        let (c1, c2) = v
+        for (v1, v2) in a { if v1 == c1 && v2 == c2 { return true } }
+        return false
+    }
+    
+    func createConnect(tab: [String]) {
+        var i = 2
+        while i < tab.count {
+            if !self.connectExist(self.connects, v: (Int(tab[1])!, Int(tab[i])!)) {
+                self.connects.append((Int(tab[1])!, Int(tab[i])!))
+            }
+            i = i + 1
+        }
+    }
     
     func loadFile(handler : (Bool) -> Void) {
         print("loadfile :", self.name)
@@ -58,7 +68,8 @@ class Ligand {
                     if tab.count >= 12 && tab[0] == "ATOM" {
                         self.atoms.append(Atom(tab: tab))
                     } else if tab.count > 1 && tab[0] == "CONECT" {
-                        self.connects.append(Connect(tab: tab))
+                        self.createConnect(tab)
+//                        self.connects.append(Connect(tab: tab))
                     }
                 }
                 return handler(true)
