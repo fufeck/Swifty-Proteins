@@ -18,6 +18,7 @@
 		CD9DECFA1DBA63B0004A5B03 /* ProteinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */; };
 		CDBC72A81DBE445D00214E45 /* pt-data1.csv in Resources */ = {isa = PBXBuildFile; fileRef = CDBC72A71DBE445D00214E45 /* pt-data1.csv */; };
 		CDBC72AA1DBE448100214E45 /* ProteinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC72A91DBE448100214E45 /* ProteinInfo.swift */; };
+		CDF5C2871DBF9A5700A8F2A8 /* ProteinDescViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5C2861DBF9A5700A8F2A8 /* ProteinDescViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinViewController.swift; sourceTree = "<group>"; };
 		CDBC72A71DBE445D00214E45 /* pt-data1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-data1.csv"; sourceTree = "<group>"; };
 		CDBC72A91DBE448100214E45 /* ProteinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinInfo.swift; sourceTree = "<group>"; };
+		CDF5C2861DBF9A5700A8F2A8 /* ProteinDescViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinDescViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				CD27A9721DB8F6C00058AB8E /* LoginViewController.swift */,
 				CD27A9741DB8F8800058AB8E /* ListViewController.swift */,
 				CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */,
+				CDF5C2861DBF9A5700A8F2A8 /* ProteinDescViewController.swift */,
 				CDBC72A91DBE448100214E45 /* ProteinInfo.swift */,
 				CD27A9611DB8F67B0058AB8E /* Main.storyboard */,
 				CD27A9671DB8F67B0058AB8E /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				CDBC72AA1DBE448100214E45 /* ProteinInfo.swift in Sources */,
 				CD27A9751DB8F8800058AB8E /* ListViewController.swift in Sources */,
 				CD27A95E1DB8F67B0058AB8E /* AppDelegate.swift in Sources */,
+				CDF5C2871DBF9A5700A8F2A8 /* ProteinDescViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -138,29 +138,6 @@ class Ligand {
             i = i + 1
         }
     }
-
-    func loadDescription(handler : (Bool) -> Void) {
-        if let urlpath = NSURL(string: "https://files.rcsb.org/ligands/view/" + self.name! + "_ideal.pdb") {
-            do {
-                let fullText = try String(contentsOfURL: urlpath)
-                let reading = fullText.componentsSeparatedByString("\n") as [String]
-                for line in reading {
-                    var tab = line.componentsSeparatedByString(" ") as [String]
-                    tab = tab.filter{$0 != ""}
-                    if tab.count >= 12 && tab[0] == "ATOM" {
-                        self.atoms.append(Atom(tab: tab))
-                    } else if tab.count > 1 && tab[0] == "CONECT" {
-                        self.createConnect(tab)
-                    }
-                }
-                return handler(true)
-            } catch let error as NSError {
-                print("ERROR :", error)
-            }
-        }
-        return handler(false)
-    }
-
     
     func loadFile(handler : (Bool) -> Void) {
         if let urlpath = NSURL(string: "https://files.rcsb.org/ligands/view/" + self.name! + "_ideal.pdb") {

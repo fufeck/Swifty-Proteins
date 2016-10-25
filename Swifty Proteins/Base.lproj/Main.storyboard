@@ -141,6 +141,7 @@
                             <barButtonItem systemItem="search" id="PYn-Ix-ud8">
                                 <connections>
                                     <action selector="viewDescriptionAction:" destination="Dfg-ce-3eJ" id="ISx-qr-c67"/>
+                                    <segue destination="S5Y-e9-F29" kind="show" identifier="DescSegue" id="GRn-i4-LXM"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="tMV-Jj-WVS">
@@ -153,17 +154,16 @@
                     <connections>
                         <outlet property="atomLabel" destination="eev-rL-ATC" id="vvf-Wy-iCt"/>
                         <outlet property="ligandScene" destination="dNY-iO-pjr" id="Y3t-TC-aOc"/>
-                        <segue destination="S5Y-e9-F29" kind="show" identifier="DescSegue" id="Zuu-Ed-gLu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtA-Ur-xki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2288" y="659"/>
         </scene>
-        <!--View Controller-->
+        <!--Protein Desc View Controller-->
         <scene sceneID="szK-OY-Xb2">
             <objects>
-                <viewController id="S5Y-e9-F29" sceneMemberID="viewController">
+                <viewController id="S5Y-e9-F29" customClass="ProteinDescViewController" customModule="Swifty_Proteins" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h2d-13-fcN"/>
                         <viewControllerLayoutGuide type="bottom" id="u32-05-vdW"/>

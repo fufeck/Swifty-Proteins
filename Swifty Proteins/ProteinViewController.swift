@@ -76,29 +76,12 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DescSegue" {
             if let vc = segue.destinationViewController as? ProteinDescViewController {
-                if let i : Int = sender as? Int {
-                    vc.ligand = self.ligand = self.ligand
-                    vc.title = self.ligand.name
-                }
+                    vc.ligand = self.ligand
+                    vc.title = self.ligand!.name
             }
         }
     }
     
-    @IBAction func viewDescriptionAction(sender: UIBarButtonItem) {
-        self.ligand.loadDescription {
-            (success : Bool) -> Void in
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            if success {
-                self.performSegueWithIdentifier("DescSegue", sender: "foo")
-            } else {
-                let alert = UIAlertView()
-                alert.title = "Bad request"
-                alert.message = "The liguand's description " + self.ligandSearch[indexPath.row].name! + " is not find"
-                alert.addButtonWithTitle("Ok")
-                alert.show()
-            }
-        }
-    }
     @IBAction func changeScene(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex
         {
