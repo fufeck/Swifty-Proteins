@@ -8,87 +8,6 @@
 
 import UIKit
 
-struct Atom {
-    var nb : Int?
-    var x : Float?
-    var y : Float?
-    var z : Float?
-    var info : Molecule?
-    
-    init(tab: [String]) {
-        if tab.count >= 12 {
-            self.nb = Int(tab[1])
-            self.x = Float(tab[6])
-            self.y = Float(tab[7])
-            self.z = Float(tab[8])
-            self.info = ProteinInfo.info.find(tab[11])
-        }
-    }
-}
-
-class Ligand {
-    
-    var name : String?
-    var atoms : [Atom] = []
-    var connects : [(Int, Int)] = []
-
-    func findAtom(nb : Int) -> Atom? {
-        for atom in self.atoms { if atom.nb == nb { return atom } }
-        return nil
-    }
-
-    
-    func connectExist(a:[(Int, Int)], v:(Int,Int)) -> Bool {
-        let (c1, c2) = v
-        for (v1, v2) in a { if v1 == c1 && v2 == c2 { return true } }
-        return false
-    }
-    
-    func createConnect(tab: [String]) {
-        var i = 2
-        while i < tab.count {
-            if !self.connectExist(self.connects, v: (Int(tab[1])!, Int(tab[i])!)) {
-                self.connects.append((Int(tab[1])!, Int(tab[i])!))
-            }
-            i = i + 1
-        }
-    }
-    
-    func loadFile(handler : (Bool) -> Void) {
-        print("loadfile :", self.name)
-        if let urlpath = NSURL(string: "https://files.rcsb.org/ligands/view/" + self.name! + "_model.pdb") {
-            do {
-                let fullText = try String(contentsOfURL: urlpath)
-                let reading = fullText.componentsSeparatedByString("\n") as [String]
-                for line in reading {
-                    var tab = line.componentsSeparatedByString(" ") as [String]
-                    tab = tab.filter{$0 != ""}
-                    if tab.count >= 12 && tab[0] == "ATOM" {
-                        self.atoms.append(Atom(tab: tab))
-                    } else if tab.count > 1 && tab[0] == "CONECT" {
-                        self.createConnect(tab)
-//                        self.connects.append(Connect(tab: tab))
-                    }
-                }
-                return handler(true)
-            } catch let error as NSError {
-                print("ERROR :", error)
-            }
-        }
-        return handler(false)
-    }
-    
-    init(name : String) {
-        self.name = name
-    }
-}
-
-extension String {
-    func indexOf(string: String) -> String.Index? {
-        return lowercaseString.rangeOfString(string.lowercaseString , options: .LiteralSearch, range: nil, locale: nil)?.startIndex
-    }
-}
-
 class ListViewController: UIViewController, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var ligands : [Ligand] = []
@@ -173,6 +92,7 @@ class ListViewController: UIViewController, NSXMLParserDelegate, UITableViewDele
             if let vc = segue.destinationViewController as? ProteinViewController {
                 if let i : Int = sender as? Int {
                     vc.ligand = self.ligandSearch[i]
+                    vc.title = self.ligandSearch[i].name
                 }
             }
         }

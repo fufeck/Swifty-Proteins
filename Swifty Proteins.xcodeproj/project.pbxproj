@@ -17,7 +17,7 @@
 		CD9DECF81DBA3A29004A5B03 /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD9DECF71DBA3A29004A5B03 /* ligands.txt */; };
 		CD9DECFA1DBA63B0004A5B03 /* ProteinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */; };
 		CDBC72A81DBE445D00214E45 /* pt-data1.csv in Resources */ = {isa = PBXBuildFile; fileRef = CDBC72A71DBE445D00214E45 /* pt-data1.csv */; };
-		CDBC72AA1DBE448100214E45 /* ProteineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC72A91DBE448100214E45 /* ProteineInfo.swift */; };
+		CDBC72AA1DBE448100214E45 /* ProteinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBC72A91DBE448100214E45 /* ProteinInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		CD9DECF71DBA3A29004A5B03 /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
 		CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinViewController.swift; sourceTree = "<group>"; };
 		CDBC72A71DBE445D00214E45 /* pt-data1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "pt-data1.csv"; sourceTree = "<group>"; };
-		CDBC72A91DBE448100214E45 /* ProteineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteineInfo.swift; sourceTree = "<group>"; };
+		CDBC72A91DBE448100214E45 /* ProteinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProteinInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 				CD27A9721DB8F6C00058AB8E /* LoginViewController.swift */,
 				CD27A9741DB8F8800058AB8E /* ListViewController.swift */,
 				CD9DECF91DBA63B0004A5B03 /* ProteinViewController.swift */,
-				CDBC72A91DBE448100214E45 /* ProteineInfo.swift */,
+				CDBC72A91DBE448100214E45 /* ProteinInfo.swift */,
 				CD27A9611DB8F67B0058AB8E /* Main.storyboard */,
 				CD27A9671DB8F67B0058AB8E /* Assets.xcassets */,
 				CDBC72A71DBE445D00214E45 /* pt-data1.csv */,
@@ -158,7 +158,7 @@
 				CD27A9731DB8F6C00058AB8E /* LoginViewController.swift in Sources */,
 				CD27A9661DB8F67B0058AB8E /* Swifty_Proteins.xcdatamodeld in Sources */,
 				CD9DECFA1DBA63B0004A5B03 /* ProteinViewController.swift in Sources */,
-				CDBC72AA1DBE448100214E45 /* ProteineInfo.swift in Sources */,
+				CDBC72AA1DBE448100214E45 /* ProteinInfo.swift in Sources */,
 				CD27A9751DB8F8800058AB8E /* ListViewController.swift in Sources */,
 				CD27A95E1DB8F67B0058AB8E /* AppDelegate.swift in Sources */,
 			);
