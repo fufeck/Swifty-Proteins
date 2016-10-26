@@ -92,7 +92,7 @@ class ListViewController: UIViewController, NSXMLParserDelegate, UITableViewDele
             if let vc = segue.destinationViewController as? ProteinViewController {
                 if let i : Int = sender as? Int {
                     vc.ligand = self.ligandSearch[i]
-                    vc.title = self.ligandSearch[i].name
+                    vc.title = "View " + self.ligandSearch[i].name!
                 }
             }
         }

@@ -77,7 +77,7 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
         if segue.identifier == "DescSegue" {
             if let vc = segue.destinationViewController as? ProteinDescViewController {
                     vc.ligand = self.ligand
-                    vc.title = self.ligand!.name
+                    vc.title = "Description " + self.ligand!.name!
             }
         }
     }
@@ -206,11 +206,14 @@ class ProteinViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //        SETUP SCENE
-        self.sceneSetup()
-        //        DISPLAY MOLECULE
-        self.ligandScene.scene!.rootNode.addChildNode(self.ballAndStickScene)
+        if self.ligandScene.scene == nil {
+            super.viewDidAppear(animated)
+            //        SETUP SCENE
+            self.sceneSetup()
+            //        DISPLAY MOLECULE
+            self.ligandScene.scene!.rootNode.addChildNode(self.ballAndStickScene)
+            
+        }
     }
     
     override func viewDidLoad() {
