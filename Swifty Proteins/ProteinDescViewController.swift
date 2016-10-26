@@ -90,6 +90,7 @@ class ProteinDescViewController: UIViewController, NSXMLParserDelegate, UITableV
             self.current.1 = ""
         }
         if elementName == "PDBx:datablock" {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             self.atomTableView.reloadData()
             return
         }
@@ -97,6 +98,7 @@ class ProteinDescViewController: UIViewController, NSXMLParserDelegate, UITableV
     
     func beginParsing()
     {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         self.parser = NSXMLParser(contentsOfURL:(NSURL(string: "https://files.rcsb.org/ligands/view/" + self.ligand!.name! + ".xml"))!)!
         self.parser.delegate = self
         self.parser.parse()
