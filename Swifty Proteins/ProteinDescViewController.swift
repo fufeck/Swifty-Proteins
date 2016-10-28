@@ -115,8 +115,6 @@ class AtomTableCell : UITableViewCell {
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var atomIdLabel: UILabel!
-    @IBOutlet weak var chargeLabel: UILabel!
-    
     @IBOutlet weak var alignLabel: UILabel!
     
     
@@ -127,9 +125,6 @@ class AtomTableCell : UITableViewCell {
             }
             if let atomId : String = self.infoAtom?["PDBx:pdbx_component_atom_id"] {
                 self.atomIdLabel.text = "Atom : " + atomId
-            }
-            if let charge : String = self.infoAtom?["PDBx:charge"] {
-                self.chargeLabel.text = "Charge : " + charge
             }
             if let align : String = self.infoAtom?["PDBx:pdbx_align"] {
                 self.alignLabel.text = "Align : " + align

@@ -251,17 +251,11 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-zb-nyV">
-                                                            <rect key="frame" x="288" y="0.0" width="288" height="41"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-zb-nyV">
+                                                            <rect key="frame" x="288" y="0.0" width="288" height="21"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charge : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMo-bI-C6C">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Align : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWl-UP-W6F">
                                                                     <rect key="frame" x="0.0" y="0.0" width="288" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align : " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWl-UP-W6F">
-                                                                    <rect key="frame" x="0.0" y="21" width="288" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -283,7 +277,6 @@
                                         <connections>
                                             <outlet property="alignLabel" destination="rWl-UP-W6F" id="S50-Gc-zCV"/>
                                             <outlet property="atomIdLabel" destination="z67-ms-Dah" id="OXk-Jk-fJM"/>
-                                            <outlet property="chargeLabel" destination="JMo-bI-C6C" id="1hL-DB-bhZ"/>
                                             <outlet property="typeLabel" destination="9SE-hm-I55" id="MKw-O9-qRa"/>
                                         </connections>
                                     </tableViewCell>
